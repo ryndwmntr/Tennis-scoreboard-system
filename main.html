@@ -1,0 +1,171 @@
+<html>
+<head>
+	<title>Tennis scoreboard system</title>
+	
+	<script type="text/javascript">
+
+		function setScore(player, score){
+
+			if (player <= 1){
+				document.getElementById("scorep1").value = score;
+			}
+			else{
+				document.getElementById("scorep2").value = score;
+			}
+		}
+
+		function setGame(player, game){
+
+			if (player <= 1){
+
+				var x = document.getElementById("gamep1").value;
+
+				gamenew = parseInt(x) + 1;
+
+				document.getElementById("gamep1").value = gamenew;
+			}
+			else{
+				var x = document.getElementById("gamep2").value;
+
+				gamenew = parseInt(x) + 1;
+
+				document.getElementById("gamep2").value = gamenew;
+			}
+		}
+
+		function setSet(player, set){
+
+			if (player <= 1){
+
+				var x = document.getElementById("setp1").value;
+
+				setnew = parseInt(x) + 1;
+
+				document.getElementById("setp1").value = setnew;
+			}
+			else{
+
+				var x = document.getElementById("setp2").value;
+
+				setnew = parseInt(x) + 1;
+
+				document.getElementById("setp2").value = setnew;
+			}
+		}
+
+	</script>
+
+	<style type="text/css">
+
+	</style>
+
+</head>
+<body>
+	<form method="POST">
+		<table align="center">
+			<tr>
+				<td><input type="text" name="matchid" id="matchid"></td>
+				<td><input type="button" name="btnmatchid" id="btnmatchid" value="search"></td>
+			</tr>
+			<tr>
+				<th>PLAYER NAME</th>
+				<th>SERVE</th>
+				<th>SCORE IN GAME</th>
+				<th>SET</th>
+				<th>GAME</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" name="player1" id="player1" value="player1">
+				</td>
+				<td>
+					<select id="ball1">
+						<option value="serve1">SERVE</option>
+						<option value="recive1">RECIVE</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" name="scorep1" id="scorep1" value="0">
+					<input type="button" name="p1+15" id="p10" value="0" onclick="setScore(1, 0)">
+					<input type="button" name="p1+15" id="p115" value="15" onclick="setScore(1, 15)">
+					<input type="button" name="p1+30" id="p130" value="30" onclick="setScore(1, 30)">
+					<input type="button" name="p1+40" id="p140" value="40" onclick="setScore(1, 40)">
+					<input type="button" name="p2+a" id="p1a" value="A" onclick="setScore(1, 'A')">
+				</td>
+				<td>
+					<input type="text" name="gamep1" id="gamep1" value="0">
+					<input type="button" name="gamep1add" id="gamep1add" value="1" onclick="setGame(1, 1)">
+				</td>
+				<td>
+					<input type="text" name="setp1" id="setp1" value="0">
+					<input type="button" name="setp1add" id="setp1add" value="1" onclick="setSet(1, 1)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" name="player2" id="player2" value="player2">
+				</td>
+				<td>
+					<select id="ball2">
+						<option value="serve2">SERVE</option>
+						<option value="recive2">RECIVE</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" name="scorep2" id="scorep2" value="0">
+					<input type="button" name="p2+0" id="p215" value="0" onclick="setScore(2, 0)">
+					<input type="button" name="p2+15" id="p215" value="15" onclick="setScore(2, 15)">
+					<input type="button" name="p2+30" id="p230" value="30" onclick="setScore(2, 30)">
+					<input type="button" name="p2+40" id="p240" value="40" onclick="setScore(2, 40)">
+					<input type="button" name="p2+a" id="p2a" value="A" onclick="setScore(2, 'A')">
+				</td>
+				<td>
+					<input type="text" name="gamep2" id="gamep2" value="0">
+					<input type="button" name="gamep2add" id="gamep2add" value="1" onclick="setGame(2, 1)">
+				</td>
+				<td>
+					<input type="text" name="setp2" id="setp2" value="0">
+					<input type="button" name="setp2add" id="setp2add" value="1" onclick="setSet(2, 1)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" name="save" id="save" value="save" >
+				</td>
+			</tr>
+		</table>
+	</form>
+		<table align="center">
+			<tr>
+				<th>P</th>
+				<th>B</th>
+				<th>S</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+			</tr>
+			<tr>
+				<td><h4>PLAYER 1</h4></td>
+				<td><h4>o</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+			</tr>
+			<tr>
+				<td><h4>PLAYER 2</h4></td>
+				<td><h4>o</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+				<td><h4>0</h4></td>
+			</tr>
+		</table>
+</body>
+</html>
