@@ -8,9 +8,11 @@
 
 			if (player <= 1){
 				document.getElementById("scorep1").value = score;
+				document.getElementById("livescorep1").innerHTML = score;
 			}
 			else{
 				document.getElementById("scorep2").value = score;
+				document.getElementById("livescorep2").innerHTML = score;
 			}
 		}
 
@@ -20,16 +22,58 @@
 
 				var x = document.getElementById("gamep1").value;
 
-				gamenew = parseInt(x) + 1;
+				var gamenew = parseInt(x) + 1;
 
 				document.getElementById("gamep1").value = gamenew;
+
+				var y = document.getElementById("setp1").value;
+				var a = document.getElementById("setp2").value;
+
+				var z = parseInt(a) + parseInt(y);
+
+				if (z == 0){
+					document.getElementById("livegamep1s1").innerHTML = gamenew;
+				}
+				else if (z == 1){
+					document.getElementById("livegamep1s2").innerHTML = gamenew;
+				}
+				else if (z == 2){
+					document.getElementById("livegamep1s3").innerHTML = gamenew;
+				}
+				else if (z == 3){
+					document.getElementById("livegamep1s4").innerHTML = gamenew;
+				}
+				else if (z == 4){
+					document.getElementById("livegamep1s5").innerHTML = gamenew;
+				}
 			}
 			else{
 				var x = document.getElementById("gamep2").value;
 
-				gamenew = parseInt(x) + 1;
+				var gamenew = parseInt(x) + 1;
 
 				document.getElementById("gamep2").value = gamenew;
+
+				var y = document.getElementById("setp1").value;
+				var a = document.getElementById("setp2").value;
+
+				var z = parseInt(a) + parseInt(y);
+
+				if (z == 0){
+					document.getElementById("livegamep2s1").innerHTML = gamenew;
+				}
+				else if (z == 1){
+					document.getElementById("livegamep2s2").innerHTML = gamenew;
+				}
+				else if (z == 2){
+					document.getElementById("livegamep2s3").innerHTML = gamenew;
+				}
+				else if (z == 3){
+					document.getElementById("livegamep2s4").innerHTML = gamenew;
+				}
+				else if (z == 4){
+					document.getElementById("livegamep2s5").innerHTML = gamenew;
+				}
 			}
 		}
 
@@ -42,6 +86,7 @@
 				setnew = parseInt(x) + 1;
 
 				document.getElementById("setp1").value = setnew;
+				document.getElementById("livesetp1").innerHTML = setnew;
 			}
 			else{
 
@@ -50,13 +95,76 @@
 				setnew = parseInt(x) + 1;
 
 				document.getElementById("setp2").value = setnew;
+				document.getElementById("livesetp2").value = setnew;
+			}
+		}
+
+		function setSettle(status){
+
+			var x = status;
+
+			if (x <= 1){
+
+				document.getElementById("scorep1").value = 0;
+				document.getElementById("scorep2").value = 0;
+				document.getElementById("livescorep1").innerHTML = 0;
+				document.getElementById("livescorep2").innerHTML = 0;
+
+			}
+			else{
+
+				document.getElementById("gamep1").value = 0;
+				document.getElementById("gamep2").value = 0;
+				document.getElementById("livegamep1").innerHTML = 0;
+				document.getElementById("livegamep2").innerHTML = 0;
+
+			}
+		}
+		function setServe(player){
+
+			var x = player;
+			var y = document.getElementById("ball1").value;
+
+			if (x <= 1 && y == "serve1"){
+
+				document.getElementById("ball1").value = "serve1";
+				document.getElementById("ball2").value = "recive2";
+				document.getElementById("liveball1").innerHTML = "o";
+				document.getElementById("liveball2").innerHTML = "x";
+
+			}
+			else{
+
+				document.getElementById("ball1").value = "recive1";
+				document.getElementById("ball2").value = "serve2";
+				document.getElementById("liveball1").innerHTML = "x";
+				document.getElementById("liveball2").innerHTML = "o";
+			}
+
+		}
+		function setName(player){
+
+			if (player <= 1 ){
+
+				var x = document.getElementById("player1").value;
+
+				document.getElementById("liveplayer1").innerHTML = x;
+			}
+			else{
+
+				var x = document.getElementById("player2").value;
+
+				document.getElementById("liveplayer2").innerHTML = x;
+
 			}
 		}
 
 	</script>
 
 	<style type="text/css">
-
+		body {
+			background-color: lightgreen;
+		}
 	</style>
 
 </head>
@@ -71,21 +179,22 @@
 				<th>PLAYER NAME</th>
 				<th>SERVE</th>
 				<th>SCORE IN GAME</th>
-				<th>SET</th>
 				<th>GAME</th>
+				<th>SET</th>
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="player1" id="player1" value="player1">
+					<input type="text" name="player1" id="player1" value="player1" onchange="setName(1)">
 				</td>
 				<td>
-					<select id="ball1">
+					<select id="ball1" onchange="setServe(1)">
+						<option value="-">-</option>
 						<option value="serve1">SERVE</option>
 						<option value="recive1">RECIVE</option>
 					</select>
 				</td>
 				<td>
-					<input type="text" name="scorep1" id="scorep1" value="0">
+					<input type="text" name="scorep1" id="scorep1" value="0"size="1"> 
 					<input type="button" name="p1+15" id="p10" value="0" onclick="setScore(1, 0)">
 					<input type="button" name="p1+15" id="p115" value="15" onclick="setScore(1, 15)">
 					<input type="button" name="p1+30" id="p130" value="30" onclick="setScore(1, 30)">
@@ -93,26 +202,27 @@
 					<input type="button" name="p2+a" id="p1a" value="A" onclick="setScore(1, 'A')">
 				</td>
 				<td>
-					<input type="text" name="gamep1" id="gamep1" value="0">
+					<input type="text" name="gamep1" id="gamep1" value="0" size="1">
 					<input type="button" name="gamep1add" id="gamep1add" value="1" onclick="setGame(1, 1)">
 				</td>
 				<td>
-					<input type="text" name="setp1" id="setp1" value="0">
+					<input type="text" name="setp1" id="setp1" value="0" size="1">
 					<input type="button" name="setp1add" id="setp1add" value="1" onclick="setSet(1, 1)">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="player2" id="player2" value="player2">
+					<input type="text" name="player2" id="player2" value="player2" onchange="setName(2)">
 				</td>
 				<td>
-					<select id="ball2">
+					<select id="ball2" onchange="setServe(2)">
+						<option value="-">-</option>
 						<option value="serve2">SERVE</option>
 						<option value="recive2">RECIVE</option>
 					</select>
 				</td>
 				<td>
-					<input type="text" name="scorep2" id="scorep2" value="0">
+					<input type="text" name="scorep2" id="scorep2" value="0" size="1">
 					<input type="button" name="p2+0" id="p215" value="0" onclick="setScore(2, 0)">
 					<input type="button" name="p2+15" id="p215" value="15" onclick="setScore(2, 15)">
 					<input type="button" name="p2+30" id="p230" value="30" onclick="setScore(2, 30)">
@@ -120,13 +230,19 @@
 					<input type="button" name="p2+a" id="p2a" value="A" onclick="setScore(2, 'A')">
 				</td>
 				<td>
-					<input type="text" name="gamep2" id="gamep2" value="0">
-					<input type="button" name="gamep2add" id="gamep2add" value="1" onclick="setGame(2, 1)">
+					<input type="text" name="gamep2" id="gamep2" value="0" size="1">
+					<input type="button" name="gamep2add" id="gamep2add" value="1" size="1" onclick="setGame(2, 1)">
 				</td>
 				<td>
-					<input type="text" name="setp2" id="setp2" value="0">
-					<input type="button" name="setp2add" id="setp2add" value="1" onclick="setSet(2, 1)">
+					<input type="text" name="setp2" id="setp2" value="0" size="1">
+					<input type="button" name="setp2add" id="setp2add" value="1" size="1" onclick="setSet(2, 1)">
 				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="button" name="settlescore" id="settlescore" value="SET" onclick="setSettle(1)"></td>
+				<td><input type="button" name="settlegame" id="settlegame" value="SET" onclick="setSettle(2)"></td>
 			</tr>
 			<tr>
 				<td>
@@ -147,24 +263,24 @@
 				<th>5</th>
 			</tr>
 			<tr>
-				<td><h4>PLAYER 1</h4></td>
-				<td><h4>o</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
+				<td><h4 id="liveplayer1">PLAYER 1</h4></td>
+				<td><h4 id="liveball1">o</h4></td>
+				<td><h4 id="livescorep1">0</h4></td>
+				<td><h4 id="livegamep1s1">0</h4></td>
+				<td><h4 id="livegamep1s2">0</h4></td>
+				<td><h4 id="livegamep1s3">0</h4></td>
+				<td><h4 id="livegamep1s4">0</h4></td>
+				<td><h4 id="livegamep1s5">0</h4></td>
 			</tr>
 			<tr>
-				<td><h4>PLAYER 2</h4></td>
-				<td><h4>o</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
-				<td><h4>0</h4></td>
+				<td><h4 id="liveplayer2">PLAYER 2</h4></td>
+				<td><h4 id="liveball2">o</h4></td>
+				<td><h4 id="livescorep2">0</h4></td>
+				<td><h4 id="livegamep2s1">0</h4></td>
+				<td><h4 id="livegamep2s2">0</h4></td>
+				<td><h4 id="livegamep2s3">0</h4></td>
+				<td><h4 id="livegamep2s4">0</h4></td>
+				<td><h4 id="livegamep2s5">0</h4></td>
 			</tr>
 		</table>
 </body>
